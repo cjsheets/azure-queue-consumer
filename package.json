@@ -1,0 +1,47 @@
+{
+  "name": "azure-queue-consumer",
+  "version": "4.0.0",
+  "description": "Port of sqs-consumer for Azure data queue",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "coverage": "istanbul cover _mocha -- -R dot && open coverage/lcov-report/index.html",
+    "lcov": "istanbul cover _mocha -- -R dot",
+    "lint": "eslint .",
+    "posttest": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cjsheets/azure-queue-consumer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cjsheets/azure-queue-consumer/issues"
+  },
+  "homepage": "https://github.com/cjsheets/azure-queue-consumer",
+  "keywords": [
+    "azure",
+    "queue",
+    "consumer"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "codeclimate-test-reporter": "0.4.1",
+    "eslint": "^2.9.0",
+    "eslint-config-iplayer-es6": "^1.2.0",
+    "istanbul": "^0.4.1",
+    "mocha": "^2.1.0",
+    "sinon": "^4.4.8"
+  },
+  "dependencies": {
+    "async": "^2.0.1",
+    "auto-bind": "^1.1.0",
+    "azure-storage": "^2.8.2",
+    "debug": "^2.1.0"
+  },
+  "eslintConfig": {
+    "extends": "iplayer-es6",
+    "parserOptions": {
+      "ecmaVersion": 2017
+    }
+  }
+}
