@@ -43,6 +43,7 @@ class Consumer extends EventEmitter {
     this.attributeNames = undefined;
     this.messageAttributeNames = undefined;
     this.stopped = true;
+    this.isWaiting = false;
     this.batchSize = options.batchSize || 1;
     this.visibilityTimeout = undefined;
     this.terminateVisibilityTimeout = undefined;
@@ -97,22 +98,19 @@ class Consumer extends EventEmitter {
     debug('Received queue service response');
     debug(response);
 
-    if (response && response.Messages && response.Messages.length > 0) {
-      async.each(response.Messages, this._processMessage, () => {
+    if (response && response.length > 0) {
+      async.each(response, this._processMessage, () => {
         // start polling again once all of the messages have been processed
         consumer.emit('response_processed');
         consumer._poll();
       });
-    } else if (response && !response.Messages) {
-      this.emit('empty');
-      this._poll();
     } else if (err && isAuthenticationError(err)) {
       // there was an authentication error, so wait a bit before repolling
       debug('There was an authentication error. Pausing before retrying.');
       setTimeout(this._poll.bind(this), this.authenticationErrorTimeoutSeconds * 1000);
     } else {
       // there were no messages, so start polling again
-      this._poll();
+      setTimeout(this._poll.bind(this), this.pollDelaySeconds * 1000);
     }
   }
 

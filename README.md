@@ -78,7 +78,7 @@ Creates a new Azure data queue consumer.
 
 * `queueUrl` - _String_ - The Azure data queue URL
 * `handleMessage` - _Function_ - A function to be called whenever a message is received. Receives a queue message object as its first argument and a function to call when the message has been handled as its second argument (i.e. `handleMessage(message, done)`).
-* `pollDelaySeconds` - _Number_ - The minimum delay (in seconds) between queue polling attempts.
+* `pollDelaySeconds` - _Number_ - The delay (in seconds) between queue polling attempts while the queue is empty.
 * `waitTimeSeconds` - _Number_ - maximum execution time across all potential retries, for requests made via the Queue service.
 * `authenticationErrorTimeout` - _Number_ - The duration (in milliseconds) to wait before retrying after an authentication error (defaults to `10000`).
 * `queueService` - _Object_ - An optional [Azure QueueService](http://azure.github.io/azure-storage-node/#toc7__anchor) instance to use if you need to configure the client manually
