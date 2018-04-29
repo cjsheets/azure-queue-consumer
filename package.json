@@ -1,6 +1,6 @@
 {
   "name": "azure-queue-consumer",
-  "version": "4.0.0",
+  "version": "0.0.1",
   "description": "Port of sqs-consumer for Azure data queue",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "queue",
     "consumer"
   ],
-  "license": "Apache-2.0",
+  "license": "MIT",
   "devDependencies": {
     "codeclimate-test-reporter": "0.4.1",
     "eslint": "^2.9.0",
